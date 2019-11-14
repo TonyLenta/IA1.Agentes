@@ -65,9 +65,10 @@ public class AddNew {
 
 	try {
 
-		rma = mainContainer.createNewAgent("BootCreate", "agentes_jade.Fms", new Object[0]);
-
+		rma = mainContainer.createNewAgent("receptor", "agentes_jade.Receptor", new Object[0]);
 		rma.start();
+                rma = mainContainer.createNewAgent("BootCreate2", "agentes_jade.Emisor", new Object[0]);
+                rma.start();
 
 	} catch (StaleProxyException e) {
 

@@ -5,6 +5,7 @@ package agentes_jade;
  *
  * @author tony_
  */
+import TareaOneshotCyclicBehavior.*;
 import jade.BootProfileImpl;
 
 import jade.core.Runtime;
@@ -58,17 +59,17 @@ public class AddNew {
 
 	AgentContainer mainContainer = jade.core.Runtime.instance().createMainContainer(profile);
 
-
+          
 
 
 	AgentController rma = null;
 
 	try {
 
-		rma = mainContainer.createNewAgent("receptor", "agentes_jade.Receptor", new Object[0]);
+		rma = mainContainer.createNewAgent("Anthony_Emisor", "agentes_jade.Emisor", new Object[0]);
 		rma.start();
-                rma = mainContainer.createNewAgent("BootCreate2", "agentes_jade.Emisor", new Object[0]);
-                rma.start();
+               rma = mainContainer.createNewAgent("receptor", "agentes_jade.Receptor", new Object[0]);
+               rma.start();
 
 	} catch (StaleProxyException e) {
 

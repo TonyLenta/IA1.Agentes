@@ -1,10 +1,6 @@
 
 package Examen;
 
-/**
- *
- * @author tony_
- */
 import jade.BootProfileImpl;
 
 import jade.core.Runtime;
@@ -18,17 +14,36 @@ import jade.util.leap.Properties;
 
 import jade.wrapper.*;
 
-public class main {
+public class main{
 
      public static void main(String args[]) throws StaleProxyException 
 
      {
 
-  
+     /*    Properties pp = new Properties();
+
+    pp.setProperty(Profile.MAIN, Boolean.FALSE.toString());
+
+    pp.setProperty(Profile.MAIN_HOST, "127.0.0.1");
+
+    pp.setProperty(Profile.MAIN_PORT, Integer.toString(1099));
+
+    Profile p = new ProfileImpl(pp);
+
+    AgentContainer ac = jade.core.Runtime.instance().createAgentContainer(p);
+
+    
+
+        ac.acceptNewAgent("JumpingAgent", new AgenteBasico()).start();
+
+    */
+
          
 
          Runtime rt = Runtime.instance();
 
+
+	// Exit the JVM when there are no more containers around
 
 	rt.setCloseVM(true);
 
@@ -43,17 +58,23 @@ public class main {
 
 
 	AgentController rma = null;
+        AgentController rma1 = null;
+        
+        
 
 	try {
 
-		rma = mainContainer.createNewAgent("humedad", "agentes_jade.humedad", new Object[0]);
+		
+                
+                rma = mainContainer.createNewAgent("temperatura1", "Examen.temperatura1", new Object[0]);
 		rma.start();
-                rma = mainContainer.createNewAgent("temp1", "agentes_jade.temperatura1", new Object[0]);
-                rma.start();
-                rma = mainContainer.createNewAgent("temp2", "agentes_jade.temperatura2", new Object[0]);
-                rma.start();
-                rma = mainContainer.createNewAgent("Compresor", "agentes_jade.velocidadCompresor", new Object[0]);
-                rma.start();
+                
+                rma = mainContainer.createNewAgent("temperatura2", "Examen.temperatura1", new Object[0]);
+		rma.start();
+                
+                rma = mainContainer.createNewAgent("fusiontemp", "Examen.fusionTemperatura", new Object[0]);
+		rma.start();
+               
 
 	} catch (StaleProxyException e) {
 

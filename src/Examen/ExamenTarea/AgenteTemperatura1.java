@@ -36,13 +36,13 @@ public class AgenteTemperatura1  extends Agent
 
    private class ciclico extends CyclicBehaviour
    {      
-      Random aletorio =new Random(); 
-      int temp = (int) (Math.random() * 100) + 1; 
-      public boolean finish=false;      
+      
+      
+        
        public void action()
-       {           
-                                              
+       {
            ACLMessage msm=receive();
+           int temp = (int) (Math.random() * 100) + 1; 
                 if (msm!=null)
                 {
                     if(msm.getContent().equals("solicitotemperatura")==true)
@@ -82,6 +82,7 @@ public class AgenteTemperatura1  extends Agent
                         {
                                    System.out.println("Temperatura fuera de rango");
                         }
+                        System.out.println("temp1:"+temp);
                     } 
                 }
                 else 

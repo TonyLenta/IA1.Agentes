@@ -80,8 +80,8 @@ public class AgenteFusion extends Agent
                     {
                         block();
                     }
+                    
                     // llama al segundo agente temperatura
-
                     id.setLocalName("temperatura2");            
                    // System.out.println(getLocalName()+" solicita temperatura 2");
                     msm2.addReceiver(id);
@@ -98,8 +98,10 @@ public class AgenteFusion extends Agent
                     else
                     {
                         block();    
-                    }            
+                    } 
+                    
                     pt=(ac+ac2)/(c1+c2);
+                    System.out.println("Promedio temperaturas 1 y 2 :"+pt);
                    String cadena = Float.toString(pt);
                             if (pt >=0 && pt <=10) 
                                 {       
@@ -127,7 +129,11 @@ public class AgenteFusion extends Agent
                                     System.out.println("Temperatura fuera de rango");
                                 }
                     respuesta6.setContent(mesajecompresor/*+":"+cadena*/);
-                    send(respuesta6);                   
+                    send(respuesta6);  
+                    System.out.println("Estado promedio temperatura: "+mesajecompresor);                   
+                    
+                    
+                    
               }
            }
             else

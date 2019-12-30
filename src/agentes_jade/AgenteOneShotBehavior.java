@@ -25,7 +25,7 @@ public class AgenteOneShotBehavior extends Agent{
     private class MyOoneShotBehavior extends OneShotBehaviour{
     public void action(){
         System.out.println("Ejecucion del comportamiento OneShotBehavior");    
-        //myAgent.doDelete();
+       // myAgent.doDelete();
     }
     }
 }

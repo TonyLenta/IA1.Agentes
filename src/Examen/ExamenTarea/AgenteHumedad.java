@@ -10,6 +10,7 @@ import jade.core.Agent;
  * @author tony_
  */
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.util.Random;
 public class AgenteHumedad extends Agent
@@ -30,62 +31,51 @@ public class AgenteHumedad extends Agent
        
         public void action()
         {
-            //block();  
-            Random aletorio =new Random();
-            int humd = (int) (Math.random() * 100) + 1;
-            String mjss="";                
-                 
+             block();
+            int humd = (int) (Math.random() * 100) + 1;   
             
-           // AID id=new AID();
-            //Instancia solicitando temperatura 1
-           // ACLMessage msm=new ACLMessage(ACLMessage.AGREE);            
-           // id.setLocalName("compresor");
-           // msm.addReceiver(id);            
-           // msm.setContent("enviohumedad");
-           // send(msm);
-           //ACLMessage respuesta = blockingReceive();   
-           ACLMessage msm=receive();
-           String cadena = Integer.toString(humd);
-           if(msm!= null)                
+           ACLMessage msm=receive();           
+           String mjss="";  
+           if(msm!= null )                
            { 
+                ACLMessage respuesta = msm.createReply();     
               if(msm.getContent().equals("solicitohumedad")==true)
               {
-                     ACLMessage respuesta = msm.createReply();                        
+                                  
                     
-                    if (humd >=0 && humd <=20) 
+                    if (humd >0 && humd <=20) 
                     { 
-                        
-                        respuesta.setContent("seco"/*+":"+cadena*/);
+                        mjss="seco";
+                        respuesta.setContent(mjss);
                         send(respuesta);      
                     } else if (humd >20 && humd <=40) 
                     {
-                        //mjss="Confortable";
-                       respuesta.setContent("confortable");
-                    send(msm);  
+                        mjss="confortable";
+                        respuesta.setContent(mjss);
+                    send(respuesta);  
                     } else if (humd >40 && humd <=70) 
                     {
-                        //mjss="Humedo";
-                       respuesta.setContent("humedo"/*+":"+cadena*/);
-                        send(msm);  
+                        mjss="humedo";
+                        respuesta.setContent(mjss);
+                        send(respuesta);  
                     }     
                     else if (humd >70 && humd <=100)
                     {
-                        //mjss="Pegajoso";
-                        
-                       respuesta.setContent("pegajoso"/*+":"+cadena*/);
-                        send(msm);  
+                        mjss="pegajoso";
+                        respuesta.setContent(mjss);
+                        send(respuesta);  
                     } else 
                     {  
                         //mjss="Fuerarango";
                         System.out.println("Humedad fuera de rango");
                     }
-                  // System.out.println("Enviando humedad a compresor");
+                   System.out.println("Humedad: "+humd+" ==> "+mjss);
+                   
               }
             }else 
-           {
+           {   
            block();
            }
-           // System.out.println("Humedad: "+mjss);
         }  
     }    
 }

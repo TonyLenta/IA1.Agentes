@@ -37,7 +37,9 @@ public class AgenteVelocidadCompresor extends Agent
             AID id=new AID();
             
             
-           //Llama a agente fusion temperatura            
+            
+               
+            //Llama a agente fusion temperatura            
             ACLMessage msm2=new ACLMessage(ACLMessage.AGREE);
             id.setLocalName("fusion");            
             //System.out.println(getLocalName()+" solicita temperatura 1");
@@ -48,12 +50,16 @@ public class AgenteVelocidadCompresor extends Agent
             if(msm2!=null)
             {
                 msjfusiontemp=respuesta2.getContent();
-               System.out.println("Temperatura: "+msjfusiontemp);
+               //System.out.println("Temperatura: "+msjfusiontemp);
             }
             else
             {
                 block();
-            }       
+            }  
+            
+            
+            
+            
             
             //Llama agente humedad            
             id.setLocalName("humedad");            
@@ -65,14 +71,18 @@ public class AgenteVelocidadCompresor extends Agent
             if(msm!=null)
             {
                 msjhumeda=respuesta.getContent();
-                System.out.println("Humedad: "+msjhumeda);
+                //System.out.println("Humedad: "+msjhumeda);
             }
             else
             {
-                block();
-            }          
+                block(900000000);
+            }
+            
+            /*************************************************/
+            
+                   
             String msj="";
-            System.out.println(msjfusiontemp+" && "+msjhumeda);
+            System.out.println("Agente compresor: Fusion temperatrua "+msjfusiontemp+" && "+msjhumeda);
              //#1 Apagado
             if(msjfusiontemp.equals("mbajo") && msjhumeda.equals("seco"))
             {

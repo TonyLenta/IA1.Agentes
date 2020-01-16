@@ -31,7 +31,7 @@ public class SequentialBehavior extends Agent{
         }
         
         public void action(){
-            System.out.println("Ejecucion del subcomportamiento"+id);
+            System.out.println("Ejecucion del subcomportamiento "+id);
         }
        
     }

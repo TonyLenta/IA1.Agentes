@@ -41,7 +41,7 @@ public class Testigo extends Agent {
  
         protected void handleAgree(ACLMessage agree)
         {
-            System.out.println("Hospital " + agree.getSender().getName()
+            System.out.println("Hospital" + agree.getSender().getName()
                     + " informa que han salido a atender el accidente.");
         }
  

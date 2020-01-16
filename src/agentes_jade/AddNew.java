@@ -65,12 +65,9 @@ public class AddNew {
 	AgentController rma = null;
 
 	try {
-
-		rma = mainContainer.createNewAgent("Anthony_Emisor", "agentes_jade.Emisor", new Object[0]);
-		rma.start();
-               rma = mainContainer.createNewAgent("receptor", "agentes_jade.Receptor", new Object[0]);
-               rma.start();
-
+               
+		rma = mainContainer.createNewAgent("agentetonto", "agentes_jade.AgenteTonto", new Object[0] );                
+                rma.start();
 	} catch (StaleProxyException e) {
 
 		e.printStackTrace();

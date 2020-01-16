@@ -32,7 +32,7 @@ public class ParallelBehavior extends Agent{
         }
         
         public void action(){
-            System.out.println("Comportamiento:"+id+"ejecutando ciclo"+ ++currentcycle);
+            System.out.println("Comportamiento: "+id+" ejecutando ciclo "+ ++currentcycle);
         }
         
         public boolean done(){

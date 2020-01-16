@@ -20,10 +20,6 @@ import jade.content.onto.*;
 import jade.content.onto.basic.*;
 import java.io.*;
 
-/**
- *
- * @author Aaron Jaramillo
- */
 public class Testigo extends Agent {
 
     private Codec codec = new SLCodec();

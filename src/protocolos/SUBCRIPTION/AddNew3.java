@@ -75,7 +75,7 @@ public class AddNew3 {
 		rma = mainContainer.createNewAgent("Agente1", "protocolos.SUBCRIPTION.SubscriptionIni", new Object[0]);
                 rma.start();
                 
-                rma = mainContainer.createNewAgent("Agente2", "protocolos.SUBCRIPTION.SubscriptionRes", new Object[0]);
+                rma = mainContainer.createNewAgent("MediaMarket", "protocolos.SUBCRIPTION.SubscriptionRes", new Object[0]);
 		rma.start(); 
                 
              

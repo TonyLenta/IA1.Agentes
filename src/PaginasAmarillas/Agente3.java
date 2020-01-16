@@ -113,17 +113,17 @@ public class Agente3 extends Agent
 
                 int j = 1;
 
-                //while(servicios.hasNext())
+                while(servicios.hasNext())
 
                 {
 
-               //     servicio = (ServiceDescription)servicios.next();
+                  servicio = (ServiceDescription)servicios.next();
 
-                 //   System.out.println(servicio.getName());
+                   System.out.println(servicio.getName());
 
-                  //  System.out.println();
+                  System.out.println();
 
-                  //  j++;
+                   j++;
 
                 }
 

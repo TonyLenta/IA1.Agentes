@@ -20,10 +20,7 @@ import jade.domain.FIPAAgentManagement.NotUnderstoodException;
 import jade.domain.FIPAAgentManagement.RefuseException;
 import jade.domain.FIPAAgentManagement.FailureException;
 
-/**
- *
- * @author Aaron Jaramillo
- */
+
 public class Comisaria extends Agent {
 
     private Codec codec = new SLCodec();
@@ -73,6 +70,7 @@ public class Comisaria extends Agent {
                 String colorPelo = dl.getLadron().getDescripcion().getColorPelo();
                 float altura = dl.getLadron().getDescripcion().getAltura();
                 int peso = dl.getLadron().getDescripcion().getPeso();
+                
 
                 System.out.println("[Comisaria " + getLocalName() + "] : Hemos recibido una llamada de " + request.getSender().getName() + " avisando de un robo.");
                 System.out.println("[Comisaria " + getLocalName() + "] : Intentando localizar su ubicacion...");

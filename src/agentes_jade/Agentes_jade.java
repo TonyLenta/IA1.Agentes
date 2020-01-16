@@ -15,7 +15,7 @@ public class Agentes_jade {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      /* AgenteTonto agente = new AgenteTonto();
+     /* AgenteTonto agente = new AgenteTonto();
        agente.setup();*/
     }
     

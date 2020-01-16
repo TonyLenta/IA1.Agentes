@@ -75,7 +75,7 @@ public class AddNew3 {
 		rma = mainContainer.createNewAgent("Hospital1", "protocolos.request.Hospital", new Object[0]);
                 rma.start();
                 
-                rma = mainContainer.createNewAgent("Hospital2", "protocolos.request.Hospital", new Object[0]);
+                rma = mainContainer.createNewAgent("Hospita12", "protocolos.request.Hospital", new Object[0]);
 		rma.start(); 
                 
                 rma2 = mainContainer.createNewAgent("Testigo", "protocolos.request.Testigo", new Object[0]);

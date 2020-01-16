@@ -15,7 +15,7 @@ import jade.proto.ProposeResponder;
 
 /**
  *
- * @author Aaron Jaramillo
+ * @author tony_
  */
 
 //-gui -port 1098 Puerta:protocolos.ProposeRes;Estudiante:protocolos.ProposeIni

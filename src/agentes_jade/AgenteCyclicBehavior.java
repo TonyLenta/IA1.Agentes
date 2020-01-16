@@ -26,10 +26,10 @@ public class AgenteCyclicBehavior  extends Agent{
         System.out.println("Ejecucion finalzada.");
     }
 
-   /* private class MyCyclicBehavior extends CyclicBehaviour{
+    private class MyCyclicBehavior extends CyclicBehaviour{
     public void action(){
         System.out.println("Ejecucion del comportamiento CyclicBehavior");    
-        myAgent.doDelete();
+        //myAgent.doDelete();
     }
-    }*/
+    }
 }

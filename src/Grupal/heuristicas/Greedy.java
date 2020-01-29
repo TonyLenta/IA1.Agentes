@@ -1,7 +1,7 @@
-package heuristicas;
+package Grupal.heuristicas;
 
-import mochila.Mochila;
-import mochila.Solution;
+import Grupal.mochila.Mochila;
+import Grupal.mochila.Solution;
 
 public class Greedy extends Heuristica {
 

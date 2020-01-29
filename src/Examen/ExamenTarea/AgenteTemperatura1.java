@@ -53,6 +53,7 @@ public class AgenteTemperatura1  extends Agent
                         {
                            //Enviando valor
                            respuesta.setContent(String.valueOf(temp));
+                           
                            send(respuesta);                                                                           
                           //System.out.println("Muy bajo");
                         }

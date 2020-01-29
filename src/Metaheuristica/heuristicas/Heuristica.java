@@ -2,13 +2,16 @@ package Metaheuristica.heuristicas;
 
 import java.util.Random;
 
-import mochila.Mochila;
-import mochila.Solution;
+import Metaheuristica.mochila.Mochila;
+import Metaheuristica.mochila.Solution;
 
 public abstract class Heuristica {
+    
+    
 
 	protected Solution chuteInicial( Mochila mochila, boolean random ){
 		
+            
 		int[] s = new int[ mochila.getNumItens() ];
 		
 		if( random ){

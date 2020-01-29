@@ -1,9 +1,9 @@
-package heuristicas;
+package Grupal.heuristicas;
 
 import java.util.Random;
 
-import mochila.Mochila;
-import mochila.Solution;
+import Grupal.mochila.Mochila;
+import Grupal.mochila.Solution;
 
 public abstract class Heuristica {
 

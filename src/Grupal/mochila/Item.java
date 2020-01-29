@@ -1,4 +1,4 @@
-package mochila;
+package Grupal.mochila;
 
 public class Item {
 	

@@ -1,7 +1,7 @@
 package Metaheuristica.heuristicas;
 
-import mochila.Mochila;
-import mochila.Solution;
+import Metaheuristica.mochila.Mochila;
+import Metaheuristica.mochila.Solution;
 
 public class SubidaEncosta extends Heuristica {
 

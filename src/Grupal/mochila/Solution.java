@@ -1,4 +1,4 @@
-package mochila;
+package Grupal.mochila;
 
 import java.util.Random;
 

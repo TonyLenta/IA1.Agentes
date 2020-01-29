@@ -1,11 +1,24 @@
-package heuristicas;
+package Grupal.heuristicas;
 
 import java.util.Random;
-import mochila.Mochila;
-import mochila.Solution;
+import Grupal.heuristicas.Heuristica;
+import Grupal.mochila.Mochila;
+import Grupal.mochila.Solution;
 
 public class Grasp extends Heuristica {
 
+        /**********
+        tiempo inicio
+        **********/
+      
+    int veces=1;
+       long ac=0;
+       float tt,p=0;
+       long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+       TInicio = System.currentTimeMillis(); //Tom
+           
+    
+    
 	private double alpha;
 	
 	private int interations;
@@ -118,4 +131,18 @@ public class Grasp extends Heuristica {
 		return new Solution( solution, index2 );
 	}
 	
+        
+        
+        /**
+         tiempo final*/
+        
+        ac=ac+tiempo;   
+        tt=ac;
+        p=tt/veces;
+        TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+        tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
+        System.out.println("Tiempo de ejecución en milisegundos: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+        System.out.println("Numero de veces ejecutadas: "+ veces);
+        System.out.println("Tiempo total en milisegundos: "+ ac);
+        System.out.println("Promedio de tiempo en minutos : "+ p);
 }

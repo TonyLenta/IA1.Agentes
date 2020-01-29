@@ -1,9 +1,9 @@
-package testdrive;
+package Grupal.testdrive;
 
-import heuristicas.*;
+import Grupal.heuristicas.*;
 import java.util.ArrayList;
-import mochila.InstanceFactory;
-import mochila.Mochila;
+import Grupal.mochila.InstanceFactory;
+import Grupal.mochila.Mochila;
 
 public class Main {
 
@@ -20,7 +20,7 @@ public class Main {
 		for( Mochila instancia : instancias ){
 
 			se.solve( instancia );
-			sa.solve( instancia );
+//			sa.solve( instancia );
 //			guloso.solve( instancia );
 //			grasp.solve( instancia );
 			System.out.println("-----------------------------------------");

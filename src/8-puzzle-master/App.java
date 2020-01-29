@@ -25,7 +25,23 @@ public class App {
         long startTime = System.currentTimeMillis();
 
         SearchTree search = new SearchTree(new Node(rootState), GOAL_STATE);
+        /*Algoritmo DFS*/
+       // search.depthFirstSearch();
+        System.out.println("----------------------------------------------");
+        /*Algoritmo BFS*/
         search.bestFirstSearch();
+        System.out.println("----------------------------------------------");
+        /*Algoritmo Iterative deeping*/
+       // search.iterativeDeepening(depthLimit);
+        System.out.println("----------------------------------------------");
+        /*Algoritmo costo uniforme*/
+        search.uniformCostSearch();
+        System.out.println("----------------------------------------------");
+        /*Algoritmo de A**/
+        search.aStar(Heuristic.H_ONE);
+        System.out.println("----------------------------------------------");
+        
+        
 
         long finishTime = System.currentTimeMillis();
         long totalTime = finishTime - startTime;

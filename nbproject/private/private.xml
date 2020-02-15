@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Algoritmos/Metaheuristica/testdrive/Main.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Algoritmos/Metaheuristica/heuristicas/SubidaEncosta.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/testdrive/Main.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/heuristicas/Heuristica.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/heuristicas/SubidaEncosta.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/heuristicas/SimulatedAnnealing.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Algoritmos/AlgoritmoBacktracking/LaberintoTarea.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/heuristicas/Grasp.java</file>
-            <file>file:/C:/Users/tony_/Documents/NetBeansProjects/agentes_jade/src/Grupal/heuristicas/Greedy.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

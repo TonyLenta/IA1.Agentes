@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Examen.ExamenTarea;
 
 import jade.core.AID;
@@ -29,20 +24,11 @@ public class AgenteFusion extends Agent {
     }
 
     private class ciclico extends CyclicBehaviour {
-
         boolean finis = false;
         float ac = 0, ac2 = 0, c1 = 0, c2 = 0, pt = 0;
-
         public void action() {
             String mesajecompresor = "";
             AID id = new AID();
-
-            ac = 0;
-            ac2 = 0;
-            pt = 0;
-            c1 = 0;
-            c2 = 0;
-
             ACLMessage msm6 = receive();
             if (msm6 != null) {
                 if (msm6.getContent().equals("solicitofuciontemperatura") == true) {
@@ -63,12 +49,9 @@ public class AgenteFusion extends Agent {
                         float temp1 = Float.parseFloat(respuesta.getContent());
                         c1++;
                         ac = ac + temp1;
-                        //System.out.println(respuesta.toString());
-
                     } else {
                         block();
                     }
-
                     // llama al segundo agente temperatura
                     id.setLocalName("temperatura2");
                     // System.out.println(getLocalName()+" solicita temperatura 2");
@@ -107,11 +90,10 @@ public class AgenteFusion extends Agent {
                     respuesta6.setContent(mesajecompresor/*+":"+cadena*/);
                     send(respuesta6);
                     System.out.println("Estado promedio temperatura: " + mesajecompresor);
-
                 }
             } else {
                 block();
             }
         }
-    }
+    }    
 }

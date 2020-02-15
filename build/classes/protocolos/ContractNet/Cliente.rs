@@ -1,2 +1,0 @@
-protocolos.Cliente
-protocolos.Cliente$ManejoOpciones

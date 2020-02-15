@@ -1,10 +1,8 @@
 
 package Algoritmos.PrimeroMejor;
 
-import java.util.ArrayList;
- 
+import java.util.ArrayList; 
 import java.util.List;
- 
 
  
 public class Graph {
@@ -20,8 +18,7 @@ public class Graph {
     public List getNodes() {
  
         return nodes;
- 
-    }
+     }
  
     @Override
  

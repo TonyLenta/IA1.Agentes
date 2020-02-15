@@ -30,14 +30,14 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
             CiclicoCompresor comcomp =  new CiclicoCompresor();
             String msjfusiontemp="", msjhumeda="";    
             AID id=new AID();
-            /*
+            
             //Llama a agente fusion temperatura            
             ACLMessage msm2=new ACLMessage(ACLMessage.AGREE);
             id.setLocalName("fusion");        
             msm2.addReceiver(id);
             msm2.setContent("solicitofuciontemperatura");
-            llama.send(msm2);
-            ACLMessage respuesta2 = llama.blockingReceive();   
+            send(msm2);
+            ACLMessage respuesta2 =blockingReceive();   
             if(msm2!=null)
             {
                 msjfusiontemp=respuesta2.getContent();
@@ -47,7 +47,7 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
             {
                 block();
             }  
-        */
+        
             
             
             //Llama agente humedad            
@@ -55,10 +55,10 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
             ACLMessage msm=new ACLMessage(ACLMessage.AGREE);
             msm.addReceiver(id);
             msm.setContent("solicitohumedad");             
-           compre.send(msm);            
-           humed.send(msm);
-         //    ACLMessage respuesta2 = humed.blockingReceive();
-           ACLMessage respuesta = compre.blockingReceive();
+           send(msm);            
+           
+         //  ACLMessage respuesta2 = blockingReceive();
+           ACLMessage respuesta = blockingReceive();
             if(msm!=null)
             {                
                msjhumeda="probando";
@@ -157,4 +157,12 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
             System.out.println("Estado del compresor: "+msjhumeda);
          
        } 
+
+    private void send(ACLMessage msm2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private ACLMessage blockingReceive() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }

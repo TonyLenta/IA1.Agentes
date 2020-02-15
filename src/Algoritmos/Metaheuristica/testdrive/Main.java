@@ -1,7 +1,10 @@
 package Algoritmos.Metaheuristica.testdrive;
 
 
-import Algoritmos.Metaheuristica.heuristicas.*;
+import Algoritmos.Metaheuristica.heuristicas.Grasp;
+import Algoritmos.Metaheuristica.heuristicas.SubidaEncosta;
+import Algoritmos.Metaheuristica.heuristicas.SimulatedAnnealing;
+import Algoritmos.Metaheuristica.heuristicas.Greedy;
 import Algoritmos.Metaheuristica.mochila.*;
 
 
@@ -37,16 +40,16 @@ public class Main {
 
             switch (eleccion) {
                 case 1:
-                    se.solve(instancia);
+                //    se.solve(instancia);
                     break;
                 case 2:
-                    sa.solve(instancia);
+               //     sa.solve(instancia);
                     break;
                 case 3:
-                    guloso.solve(instancia);
+                //    guloso.solve(instancia);
                     break;
                 case 4:
-                    grasp.solve(instancia);
+                 //   grasp.solve(instancia);
                     break;
             }
 

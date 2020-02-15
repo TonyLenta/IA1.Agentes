@@ -12,14 +12,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Jugador {
-
     /*Atributos del jugador.*/
     String nombre;
     public int GANADOS, PERDIDOS, EMPATADOS;
-
     /*Imagen de la ficha del jugador.*/
     private ImageIcon ficha;
-
     /**
      * Crea un nuevo Jugador.
      */
@@ -34,7 +31,6 @@ public class Jugador {
         /*Imagen por defecto.*/
         miFicha(ruta);
     }
-
     /**
      * Crea un nuevo Jugador.
      */
@@ -49,25 +45,20 @@ public class Jugador {
         /*Imagen por defecto.*/
         this.ficha = imagen;
     }
-
     /*M�todo que incrementa los juegos ganados.*/
     public void gano() {
         GANADOS++;
     }
-
     public void perdio() {
         PERDIDOS++;
     }
-
     public void empato() {
         EMPATADOS++;
     }
-
     /*M�todo que devuelve la imagen de la ficha.*/
     public ImageIcon obtenFicha() {
         return ficha;
     }
-
     /*M�todo que establace la ficha.*/
     public void miFicha(String ruta) {
         this.ficha = new ImageIcon(this.getClass().getResource(ruta));

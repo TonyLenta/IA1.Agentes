@@ -12,9 +12,7 @@ import java.lang.Runnable;
 import java.util.Arrays;
 
 public class ComputadoraIA {
-
     public static int tiradas = 0;
-
     class NodoG {
 
         /*Mejor movimiento.*/
@@ -38,16 +36,12 @@ public class ComputadoraIA {
 
         }
     }
-
     /*Ra�z del �rbol*/
     NodoG arbol = new NodoG();
-
     /*Atributos.*/
     int[] tablero;
-
     /*Mi ficha.*/
     public final int miFICHA = 2;
-
     /*M�todo que nos devuelve los espacios disponibles.*/
     public int movDisponibles(int[] tablero) {
         int mov = 0;
@@ -60,7 +54,6 @@ public class ComputadoraIA {
 
         return mov;
     }
-
     /*M�todo que nos devuelve los indices del tablero de las pocisiones vac�as.*/
     public int[] posVacias(int[] tablero) {
         /*Creamos el vector con los �ndices.*/
@@ -76,36 +69,28 @@ public class ComputadoraIA {
         }
         return indices;
     }
-
     /*Clase que recibe el tablero actual.*/
     public int movimiento(int[] tablero) {
         /*Asignamos el tablero.*/
         this.tablero = tablero;
         tiradas++;
-
         /*Copiamos el tablero a nuestro nodo ra�z.*/
         for (int i = 0; i < 9; i++) {
             this.arbol.tablero[i] = this.tablero[i];
         }
-
         /*Calculamos el mejor movimiento del �rbol, desde las hojas hasta la raiz.*/
         movComputadora(arbol);
-
         /*Devolvemos el mejor movimiento.*/
         return arbol.mejorMovimiento;
     }
-
     /*M�todo recursivo, que genera los nodos con los movimientos.*/
     public void movComputadora(NodoG raiz) {
-
         /*N�mero de movimientos disponibles y sus indices en el tablero.*/
         int movimientos = movDisponibles(raiz.tablero);
         int indices[] = posVacias(raiz.tablero);
         int Max, Min;
-
         /*Inicializamos el nodo.*/
         raiz.nodos = new NodoG[movimientos];
-
         /*Verificamos si hay un ganador.*/
         int ganador = terminado(raiz.tablero);
         if (ganador == 1) {
@@ -156,7 +141,6 @@ public class ComputadoraIA {
         }
 
     }
-
     /*M�todo que calcula el M�XIMO de los nodos hijos de MIN*/
     public int Max(NodoG raiz) {
         int Max = -111;
@@ -179,7 +163,6 @@ public class ComputadoraIA {
 
         return Max;
     }
-
     /*M�todo que calcula el M�NIMO de los nodos hijos de MAX.*/
     public int Min(NodoG raiz) {
         int Min = 111;
@@ -199,7 +182,6 @@ public class ComputadoraIA {
 
         return Min;
     }
-
     /*M�todo que dice si el juego est� terminado.*/
  /*Regresa 0 si nadie gana, 1 si gana jugador 1 y 2 si gana jugador 2*/
     public int terminado(int[] tablero) {
@@ -226,17 +208,14 @@ public class ComputadoraIA {
         return 0;
 
     }
-
     /*M�todo que nos dice si gana la computadora.*/
     public boolean puedoGanar(int[] tablero) {
         return terminado(tablero) == 2;
     }
-
     /*M�todo que nos dice si pierde la computadora.*/
     public boolean puedoPerder(int[] tablero) {
         return terminado(tablero) == 1;
     }
-
     /*M�todo que imprime un vector como un MiniMax. xD*/
     public void imprime(int[] MiniMax) {
         for (int i = 0; i < 9; i++) {

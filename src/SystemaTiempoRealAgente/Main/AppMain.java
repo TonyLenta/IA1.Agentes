@@ -51,12 +51,12 @@ public class AppMain
            
             
             // Agente temperatura 1
-         //   rma4 = mainContainer.createNewAgent("temperatura", "SystemaTiempoRealAgente.Agentes.AgenteTemperatura1", new Object[0]);
-          //  rma4.start();
+           rma4 = mainContainer.createNewAgent("temperatura", "SystemaTiempoRealAgente.Agentes.AgenteTemperatura1", new Object[0]);
+           rma4.start();
           
             //Agente temperatura 2
-          //  rma5 = mainContainer.createNewAgent("temperatura2", "SystemaTiempoRealAgente.Agentes.AgenteTemperatura2", new Object[0]);
-          //  rma5.start();  
+            rma5 = mainContainer.createNewAgent("temperatura2", "SystemaTiempoRealAgente.Agentes.AgenteTemperatura2", new Object[0]);
+            rma5.start();  
   
             
              

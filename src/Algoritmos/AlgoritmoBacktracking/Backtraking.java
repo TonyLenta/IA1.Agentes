@@ -1,31 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Algoritmos.AlgoritmoBacktracking;
 
-/**
- *
- * @author Fernando Guerra
- */
 public class Backtraking {
-
     // Declaracion de variables privadas
     private int counter = 0;
     private final int Valor_Maxiom_de_solucion = 1000;
     private int mejor_solucion = Valor_Maxiom_de_solucion;
     private char[][] entrada;
-    private char[][] laberinto;
-    
+    private char[][] laberinto; 
 // constructor // laberinto es una matriz
     public Backtraking(char[][] laberinto, int x, int y, char objeto) {
         this.laberinto = laberinto;
         this.laberinto[x][y] = objeto;
         this.entrada = null;
     }
-
-    // 
+ // 
     private void Copia_Laberinto() {
         entrada = new char[this.laberinto.length][this.laberinto[0].length];
         for (int x = 0; x < this.laberinto.length; x++) {
@@ -94,7 +82,6 @@ public class Backtraking {
         }
         return Valor_Maxiom_de_solucion;
     }
-
     // funcion que imprime los laberintos varias veces
     private String imprimir_matriz() {
         System.out.println("---------------------------------------------");
@@ -107,7 +94,6 @@ public class Backtraking {
         }
         return output;
     }
-
     // imprime la solucion
     public String imprimir_matrizSolution() {
         System.out.println("---------------------------------------------");

@@ -91,7 +91,6 @@ public class SearchTree {
                 currentNode.addChild(child);
                 child.setParent(currentNode);
                 successorsQueue.enqueue(child);
-
             }
             //we add the queue that contains the successors of the visted node to the beginning of the main queue
             mainQueue.addQueue(successorsQueue);

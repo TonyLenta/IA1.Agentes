@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Examen.ExamenTarea;
 
 /**
@@ -10,18 +5,9 @@ package Examen.ExamenTarea;
  * @author tony_
  */
  
-import PaginasAmarillas.*;
-import jade.BootProfileImpl;
-
 import jade.core.Runtime;
-
 import jade.core.Profile;
-
 import jade.core.ProfileImpl;
-
-import jade.util.leap.Properties;
-
-
 import jade.wrapper.*;
 
 public class AppMain 
@@ -43,8 +29,7 @@ public class AppMain
         {
             //Agente humedad   
             rma2 = mainContainer.createNewAgent("humedad", "Examen.ExamenTarea.AgenteHumedad", new Object[0]);
-            rma2.start();
-            
+            rma2.start();   
             
             // Agente temperatura 1
             rma4 = mainContainer.createNewAgent("temperatura", "Examen.ExamenTarea.AgenteTemperatura1", new Object[0]);

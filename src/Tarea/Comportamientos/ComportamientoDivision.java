@@ -22,7 +22,9 @@ public class ComportamientoDivision extends OneShotBehaviour {
            TInicio = System.nanoTime(); //Tom
            
     /**************************************************************************************/    
-        Scanner entrada = new Scanner (System.in);
+        while (veces<=999) {
+           
+           Scanner entrada = new Scanner (System.in);
        
         double n1, n2;
         double division;
@@ -36,10 +38,9 @@ public class ComportamientoDivision extends OneShotBehaviour {
         
         System.out.println("La Division es: " + division);
         System.out.println("Ejecucion del Comportamiento Division");
-        
-        
-        
-         /***************************************************************************************/
+                
+        }
+        /***************************************************************************************/
            TFin = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
            tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
            System.out.println("Tiempo de ejecución en milisegundos: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
@@ -51,10 +52,6 @@ public class ComportamientoDivision extends OneShotBehaviour {
        System.out.println("Numero de veces ejecutadas: "+ veces);
        System.out.println("Tiempo total en milisegundos: "+ ac);
         System.out.println("Promedio de tiempo en minutos : "+ p);
-        
-        
-        
-        
         /*Termina el agente*/
         myAgent.doDelete();
     }

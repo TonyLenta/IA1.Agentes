@@ -18,12 +18,12 @@ public class ComportamientoSuma extends OneShotBehaviour {
         //Scanner entrada = new Scanner (System.in);
         int veces=1;
         long ac=0;
-        float tt,p=0;
-        long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+        float p=0;
+        long TInicio, TFin, tiempo=0; //Variables para determinar el tiempo de ejecución
         
            
      /**************************************************************************************/    
-       // while (veces<=999) {
+        while (veces<=999) {
         TInicio = System.nanoTime(); //Obtine los nanosegundos           
         double n1 = (int)(Math.random() * 100) + 1;  
         double n2 = (int)(Math.random() * 100) + 1;
@@ -33,19 +33,16 @@ public class ComportamientoSuma extends OneShotBehaviour {
         System.out.println("Numero 2:"+n2);
         System.out.println("La Suma es: " + suma);
         System.out.println("Ejecucion del Comportamiento Suma");
-       // veces++;        
+        veces++;        
         TFin = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
         tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
-        //ac=ac+tiempo;
-       // }
+        ac=ac+tiempo;
+        }
      /***************************************************************************************/
-        
-        tt=ac;
-        //p=tt/veces;   
-        System.out.println("Tiempo de ejecución en nanosegundos: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
-       // System.out.println("Numero de veces ejecutadas: "+ veces);
-       // System.out.println("Tiempo total en milisegundos: "+ ac);
-        //System.out.println("Promedio de tiempo en minutos : "+ p);
+        p=ac/veces; 
+        System.out.println("Numero de veces ejecutadas: "+ veces);
+        System.out.println("Tiempo total de ejecución en nanosegundos de los 1000 comportamientos: " + ac); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+        System.out.println("Promedio de tiempo en nanoseguntos de 1000 comportamientos : "+ p);
         /*Termina el agente*/
         myAgent.doDelete();
     }

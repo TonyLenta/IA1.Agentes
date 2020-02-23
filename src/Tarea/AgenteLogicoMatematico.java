@@ -38,7 +38,7 @@ public class AgenteLogicoMatematico extends Agent{
         
         switch (opcion){
             case 1:
-                ComportamientoSuma s = new ComportamientoSuma();
+                ComportamientoSuma s = new ComportamientoSuma();                
                 addBehaviour(s);
                 break;
             case 2:

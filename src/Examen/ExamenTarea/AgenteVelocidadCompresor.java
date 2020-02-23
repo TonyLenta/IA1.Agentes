@@ -23,26 +23,26 @@ public class AgenteVelocidadCompresor extends Agent
     
         System.out.println("Finalizando..");
     }
-    
-    
+        
     private class ciclico extends CyclicBehaviour
     {
-        
-        
-        boolean finis=false;
-        
         public void action()
-        {  
+        {
+            block();
+            /*Tiempo de ejecucion*/
+            //int veces=1;
+            //long ac=0;
+            //float tt,p=0;
+            long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+            TInicio = System.currentTimeMillis(); //Tom
+            
+            /*Comunicacion agentes*/
             String msjfusiontemp="", msjhumeda="";    
             AID id=new AID();
             
-            
-            
-               
             //Llama a agente fusion temperatura            
             ACLMessage msm2=new ACLMessage(ACLMessage.AGREE);
             id.setLocalName("fusion");            
-            //System.out.println(getLocalName()+" solicita temperatura 1");
             msm2.addReceiver(id);
             msm2.setContent("solicitofuciontemperatura");
             send(msm2);
@@ -50,17 +50,13 @@ public class AgenteVelocidadCompresor extends Agent
             if(msm2!=null)
             {
                 msjfusiontemp=respuesta2.getContent();
-               //System.out.println("Temperatura: "+msjfusiontemp);
+                //System.out.println("FusioTemperaturas: "+msjfusiontemp);
             }
             else
             {
                 block();
             }  
-            
-            
-            
-            
-            
+               
             //Llama agente humedad            
             id.setLocalName("humedad");            
             ACLMessage msm=new ACLMessage(ACLMessage.AGREE);
@@ -77,13 +73,12 @@ public class AgenteVelocidadCompresor extends Agent
             {
                 block(900000000);
             }
-            
+            System.out.println("Agente compresor: Fusion temperatrua "+msjfusiontemp+" && "+msjhumeda);
             /*************************************************/
             
-                   
+            /*Estado de compresor basada en 15 reglas*/       
             String msj="";
-            System.out.println("Agente compresor: Fusion temperatrua "+msjfusiontemp+" && "+msjhumeda);
-             //#1 Apagado
+            //#1 Apagado
             if(msjfusiontemp.equals("mbajo") && msjhumeda.equals("seco"))
             {
                 msj="Apagado";
@@ -158,10 +153,21 @@ public class AgenteVelocidadCompresor extends Agent
             {
                 msj="Rapido";
                // System.out.println("Rapido");
-            }
-            
+            }            
             System.out.println("Estado del compresor: "+msj);
-         
+            
+            /*Muestra tiempo de ejecucion*/
+            /***************************************************************************************/
+            TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+            tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
+            System.out.println("Tiempo de ejecución en milisegundos VelocidadCompresor: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+            //veces++;
+            //ac=ac+tiempo;  
+            //tt=ac;
+            //p=tt/veces;
+            //System.out.println("Numero de veces ejecutadas: "+ veces);
+            //System.out.println("Tiempo total en milisegundos en generacion de Temperatura1: "+ ac);
+            //System.out.println("Promedio de tiempo en minutos : "+ p);
        } 
     }       
 }

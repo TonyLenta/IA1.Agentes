@@ -17,6 +17,10 @@ import SystemaTiempoRealAgente.Agentes.AgenteTemperatura1;
  */
 public class CiclicloTemperatura1 extends CyclicBehaviour
    { 
+    
+    protected long ci;
+    
+    
     public void action()
        {
            // se agrego

@@ -1,31 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Examen.ExamenTarea;
 
-import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.SimpleBehaviour;
-import jade.core.behaviours.WakerBehaviour;
 import jade.lang.acl.ACLMessage;
-import java.util.Random;
 
 /**
  *
  * @author tony_
  */
 public class AgenteTemperatura1  extends Agent
-{
-    
+{    
    protected void setup()
    {
        ciclico comportamientosimple = new ciclico();
        addBehaviour( comportamientosimple);              
-        System.out.println("Iniciando agente "+getLocalName());       
+       System.out.println("Iniciando agente "+getLocalName());       
    
    }
 
@@ -35,15 +24,21 @@ public class AgenteTemperatura1  extends Agent
    }
 
    private class ciclico extends CyclicBehaviour
-   {      
-      
-      
-        
+   { 
        public void action()
        {
+           block();
+           /*Tiempo de ejecucion*/
+           // int veces=1;
+           // long ac=0;
+           // float tt,p=0;
+           long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+           TInicio = System.currentTimeMillis(); //Tom
+            
+           /*Comunicacion agentes*/
            ACLMessage msm=receive();
            int temp = (int) (Math.random() * 100) + 1; 
-                if (msm!=null)
+           if (msm!=null)
                 {
                     if(msm.getContent().equals("solicitotemperatura")==true)
                     { 
@@ -52,45 +47,52 @@ public class AgenteTemperatura1  extends Agent
                         if (temp >=0 && temp <=10) 
                         {
                            //Enviando valor
-                           respuesta.setContent(String.valueOf(temp));
-                           
-                           send(respuesta);                                                                           
-                          //System.out.println("Muy bajo");
+                           respuesta.setContent(String.valueOf(temp));                           
+                           send(respuesta); 
                         }
                         else if (temp >10 && temp <=25) 
                         {  
                            //Enviando valor
                            respuesta.setContent(String.valueOf(temp));
-                           send(respuesta);                     
-                         //System.out.println("Bajo");
+                           send(respuesta);
                         } 
                         else if (temp >25 && temp <=35) 
                         {
                            //Enviando valor
                            respuesta.setContent(String.valueOf(temp));
-                           send(respuesta);                    
-                          // System.out.println("Alto");
-                            
+                           send(respuesta);                             
                         }                                                           
                         else if (temp >35 && temp <=100)
                         {
                            //Enviando valor
                            respuesta.setContent(String.valueOf(temp));
-                           send(respuesta);                       
-                          //System.out.println("Muy alto");
+                           send(respuesta); 
                         }
                         else 
                         {
-                                   System.out.println("Temperatura fuera de rango");
+                            System.out.println("Temperatura fuera de rango");
                         }
                         System.out.println("temp1:"+temp);
-                    } 
+                        
+                        /*Muestra tiempo de ejecucion*/
+                        /***************************************************************************************/
+                        TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+                        tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
+                        System.out.println("Tiempo de ejecución en milisegundos Temperatura1: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+                        //veces++;
+                        //ac=ac+tiempo;  
+                        //tt=ac;
+                        //p=tt/veces;
+
+                        //System.out.println("Numero de veces ejecutadas: "+ veces);
+                        //System.out.println("Tiempo total en milisegundos en generacion de Temperatura1: "+ ac);
+                        //System.out.println("Promedio de tiempo en minutos : "+ p);
+                    }            
                 }
-                else 
-                {
-                block();
-                }
-              //  System.out.println("Enviado temp1");
+           else 
+           {
+               block();
+           }
        }       
    }   
 }

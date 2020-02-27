@@ -1,0 +1,4 @@
+-gui -port 1098 agente:Examen.ExamenTarea.AgenteVelocidadCompresor;temperatura:Examen.ExamenTarea.AgenteTemperatura1;humedad:Examen.ExamenTarea.AgenteHumedad
+
+
+-gui -port 1098 superagente:Tarea.AgenteLogicoMatematico

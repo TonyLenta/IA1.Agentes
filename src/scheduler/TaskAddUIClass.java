@@ -14,9 +14,9 @@ public class TaskAddUIClass extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel burstLabel, arrivalLabel, deadlineLabel, notifyLabel;
-	private JTextField burstText, arrivalText, deadlineText;
-	private JButton addButton, submitButton;
+	public JLabel burstLabel, arrivalLabel, deadlineLabel, notifyLabel;
+	public JTextField burstText, arrivalText, deadlineText;
+	public  JButton addButton, submitButton;
 	private AddUIListener listener;
 	
 	public static final ArrayList<Task> taskList = new ArrayList<Task>();
@@ -42,21 +42,21 @@ public class TaskAddUIClass extends JFrame {
 		addButton = new JButton();
 		submitButton = new JButton();
 		
-		burstLabel.setText("Burst Time");
+		burstLabel.setText("Tiempo maximo ejecucion (Ci)");
 		burstLabel.setBounds(100, 20, 100, 50);
 		getContentPane().add(burstLabel);
 		
 		burstText.setBounds(200, 25, 100, 30);
 		getContentPane().add(burstText);
 		
-		arrivalLabel.setText("Arrival Time");
+		arrivalLabel.setText("Tiempo real de tarea (Ti)");
 		arrivalLabel.setBounds(325, 20, 100, 50);
 		getContentPane().add(arrivalLabel);
 		
 		arrivalText.setBounds(425, 25, 100, 30);
 		getContentPane().add(arrivalText);
 		
-		deadlineLabel.setText("Deadline Time");
+		deadlineLabel.setText("Tiempo de plazo maximo de terminacion (Di)");
 		deadlineLabel.setBounds(550, 20, 100, 50);
 		getContentPane().add(deadlineLabel);
 		
@@ -66,7 +66,7 @@ public class TaskAddUIClass extends JFrame {
 		notifyLabel.setBounds(300, 75, 300, 50);
 		getContentPane().add(notifyLabel);
 		
-		addButton.setText("Add Task");
+		addButton.setText("Agregar comportamiento de agente");
 		addButton.setBounds(200, 150, 100, 50);
 		getContentPane().add(addButton);
 		
@@ -119,7 +119,7 @@ public class TaskAddUIClass extends JFrame {
 			}
 		});
 		
-		submitButton.setText("Execute Tasks");
+		submitButton.setText("Ejecutar comportamientos");
 		submitButton.setBounds(400, 150, 150, 50);
 		getContentPane().add(submitButton);
 		
@@ -150,7 +150,8 @@ public class TaskAddUIClass extends JFrame {
 		this.listener = listener;
 	}
 	
-	public interface AddUIListener {
+	
+        public interface AddUIListener {
 		void onAddActionSubmit(ArrayList<Task> taskList);
 	}
 	

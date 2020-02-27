@@ -35,16 +35,11 @@ public class AppMain
             rma4 = mainContainer.createNewAgent("temperatura", "Examen.ExamenTarea.AgenteTemperatura1", new Object[0]);
             rma4.start();
           
-            //Agente temperatura 2
-            rma5 = mainContainer.createNewAgent("temperatura2", "Examen.ExamenTarea.AgenteTemperatura2", new Object[0]);
-            rma5.start();  
-           
+            
             //Agente Compresor
             rma1 = mainContainer.createNewAgent("compresor", "Examen.ExamenTarea.AgenteVelocidadCompresor", new Object[0]);
             rma1.start();
-            //Agente Fucion temperatura
-            rma3 = mainContainer.createNewAgent("fusion", "Examen.ExamenTarea.AgenteFusion", new Object[0]);
-            rma3.start();
+            
         } 
         catch (StaleProxyException e) 
         {

@@ -7,7 +7,9 @@ package Examen.ExamenTarea;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
+import java.util.Scanner;
 public class AgenteHumedad extends Agent
 {   
      public void setup()
@@ -21,69 +23,46 @@ public class AgenteHumedad extends Agent
         System.out.println("Ejecucion finalzada.");
     }
     
-    private class MyCyclicBehavior extends CyclicBehaviour
+    private class MyCyclicBehavior extends CyclicBehaviour 
     {
         public void action()
         {
-            block();
-            /*Tiempo de ejecucion*/
-            //int veces=1;
-            //long ac=0;
-            //float tt,p=0;
-            long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
-            TInicio = System.currentTimeMillis(); //Tom
-            
-            /*Comunicacion agentes*/
-            
-            ACLMessage msm=receive();           
-            int humd = (int) (Math.random() * 100) + 1;   
-            String mjss="";  
-            if(msm!= null )
+           /*Comunicacion agentes*/
+           ACLMessage msm=receive();           
+           if(msm!= null )
             {
-                ACLMessage respuesta = msm.createReply();
                 if(msm.getContent().equals("solicitohumedad")==true)
                 {
-                    if (humd >0 && humd <=20) 
-                    { 
-                        mjss="seco";
-                        respuesta.setContent(mjss);
-                        send(respuesta);      
-                    } else if (humd >20 && humd <=40) 
-                    {
-                        mjss="confortable";
-                        respuesta.setContent(mjss);
-                    send(respuesta);  
-                    } else if (humd >40 && humd <=70) 
-                    {
-                        mjss="humedo";
-                        respuesta.setContent(mjss);
-                        send(respuesta);  
-                    }     
-                    else if (humd >70 && humd <=100)
-                    {
-                        mjss="pegajoso";
-                        respuesta.setContent(mjss);
-                        send(respuesta);  
-                    } else 
-                    {  
-                        //mjss="Fuerarango";
-                        System.out.println("Humedad fuera de rango");
-                    }
-                   System.out.println("Humedad: "+humd+" ==> "+mjss);
-                   
+                   long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+                   TInicio = System.currentTimeMillis(); //Tom
+                   /*Tiempos*/
+                   Scanner reader = new Scanner(System.in);
+                        float di = 0;
+                        float u=0;
+                        System.out.println("Ingrese tiempo limite resta");
+                        di = reader.nextInt();
+                        /*Comportamiento*/
+                        float n1 = (int) (Math.random() * 100) + 1; 
+                        float n2 = (int) (Math.random() * 100) + 1;
+                        float resta;
+                        resta=n1-n2;
+                        System.out.println("Resta:"+resta);
+                    
                    /*Muestra tiempo de ejecucion*/
                    /***************************************************************************************/
                    TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
                    tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
                    System.out.println("Tiempo de ejecución en milisegundos Humedad: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
-                   //veces++;
-                   //ac=ac+tiempo;  
-                   //tt=ac;
-                   //p=tt/veces;
-                   //System.out.println("Numero de veces ejecutadas: "+ veces);
-                   //System.out.println("Tiempo total en milisegundos en generacion de Temperatura1: "+ ac);
-                   //System.out.println("Promedio de tiempo en minutos : "+ p);
-                   
+                    
+                    u=(float)tiempo/di;
+                        
+                        
+                        
+                        ACLMessage respuesta = msm.createReply();    
+                        respuesta.setContent(String.valueOf(u));                           
+                        send(respuesta); 
+                        System.out.println("envia factor de utilizacion resta");
+                 
               }
             }else 
            {   

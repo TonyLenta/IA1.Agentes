@@ -7,20 +7,31 @@ package Tarea.Comportamientos;
 
 import jade.core.behaviours.OneShotBehaviour;
 import java.util.Scanner;
+import Tarea.Tiempos.*;
+
 
 /**
  *
  * @author tony_
  */
 public class ComportamientoSuma extends OneShotBehaviour {
-
-    public void action() {
+    /*Tiempos de calculo para sistema real*/
+    public int burstTime=40;
+    public int arrivalTime=50;
+    public int deadlineTime=50;
+    private int id = 0;
+    
+        
+    public void action()  {
         //Scanner entrada = new Scanner (System.in);
         int veces=1;
         long ac=0;
         float p=0;
         long TInicio, TFin, tiempo=0; //Variables para determinar el tiempo de ejecución
-        
+      /*  Tiempos tiemporeal = new Tiempos();
+        tiemporeal.setCi(burstTime);
+        tiemporeal.setTi(arrivalTime);
+        tiemporeal.setDi(deadlineTime);*/
            
      /**************************************************************************************/    
         while (veces<=999) {
@@ -43,7 +54,13 @@ public class ComportamientoSuma extends OneShotBehaviour {
         System.out.println("Numero de veces ejecutadas: "+ veces);
         System.out.println("Tiempo total de ejecución en nanosegundos de los 1000 comportamientos: " + ac); //Mostramos en pantalla el tiempo de ejecución en milisegundos
         System.out.println("Promedio de tiempo en nanoseguntos de 1000 comportamientos : "+ p);
+        System.out.println("Promedio de tiempo en miliseguntos de 1000 comportamientos : "+ (p/100000));
         /*Termina el agente*/
-        myAgent.doDelete();
+        //myAgent.doDelete();
     }
+    
+ 
+    
+    
+    
 }

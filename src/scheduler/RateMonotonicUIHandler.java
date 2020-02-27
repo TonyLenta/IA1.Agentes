@@ -31,6 +31,7 @@ public class RateMonotonicUIHandler {
 				scheduler.calculateLimitSummation(tasks);
 				
 				scheduler.executeTasks();
+      
 			}
 		});
 	}

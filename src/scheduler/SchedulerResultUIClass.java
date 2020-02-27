@@ -58,27 +58,27 @@ public class SchedulerResultUIClass extends JFrame implements RateMonotonicSched
 		tableSetup();
 		
 		//Labels
-		boundaryLabel.setText("Utilisation Boudary:");
+		boundaryLabel.setText("Factor utilizacion garantizado (UG):");
 		boundaryLabel.setBounds(0, 0, 150, 50);
 		getContentPane().add(boundaryLabel);
 		
-		limitLabel.setText("Utilisation Limit:");
+		limitLabel.setText("Factor de utilizacion (U):");
 		limitLabel.setBounds(0, 50, 150, 50);
 		getContentPane().add(limitLabel);
 		
-		wtLabel.setText("Waiting Time:");
+		wtLabel.setText("Tiempo de espera:");
 		wtLabel.setBounds(0, 100, 200, 50);
 		getContentPane().add(wtLabel);
 		
-		awtLabel.setText("Average WT:");
+		awtLabel.setText("WT promedio:");
 		awtLabel.setBounds(0, 150, 200, 50);
 		getContentPane().add(awtLabel);
 		
-		tatLabel.setText("Turnaround Time:");
+		tatLabel.setText("Tiempo de respuesta:");
 		tatLabel.setBounds(0, 200, 200, 50);
 		getContentPane().add(tatLabel);
 		
-		atatLabel.setText("Average TAT:");
+		atatLabel.setText("TAT promedio:");
 		atatLabel.setBounds(0, 250, 200, 50);
 		getContentPane().add(atatLabel);
 		
@@ -108,7 +108,7 @@ public class SchedulerResultUIClass extends JFrame implements RateMonotonicSched
 		getContentPane().add(atatLabelVal);
 		
 		areAllScheduleLabel.setBounds(0, 300, 200, 50);
-		areAllScheduleLabel.setText("All may be schedulable:");
+		areAllScheduleLabel.setText("Comportamientos planificables con RM:");
 		getContentPane().add(areAllScheduleLabel);
 		
 		areAllScheduleVal.setBounds(175, 300, 75, 50);
@@ -119,12 +119,12 @@ public class SchedulerResultUIClass extends JFrame implements RateMonotonicSched
 
 	private void tableSetup() {
 		DisplayClass d = new DisplayClass();
-		d.processID =  "Process ID";
-		d.burstTime = "Burst Time";
-		d.arrivalTime = "Arrival Time";
-		d.deadline = "Deadline";
-		d.completedOnTime = "Before/on deadline";
-		d.time = "Time";
+		d.processID =  "ID de proceso";
+		d.burstTime = "Tiempo de ráfaga o quemado (Ci)";
+		d.arrivalTime = "El tiempo de llegada o Arrival Time (Ti)";
+		d.deadline = "Tiempo plazo maximo ejecucion (Di)";
+		d.completedOnTime = "Antes / en la fecha límite Before/on deadline  ";
+		d.time = "Tiempo";
 		displayList.add(d);
 		
 		model = new DataModel();

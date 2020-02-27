@@ -5,6 +5,7 @@
  */
 package Tarea.Comportamientos;
 
+import Tarea.Tiempos.Tiempos;
 import jade.core.behaviours.OneShotBehaviour;
 import java.util.Scanner;
 
@@ -14,21 +15,50 @@ import java.util.Scanner;
  */
 public class ComportamientoMultiplicacion extends OneShotBehaviour {
 
+    /*Tiempos de calculo para sistema real*/
+    public int burstTime=8;
+    public int arrivalTime=10;
+    public int deadlineTime=10;
+    private int id = 0;
+    
+        
     public void action() {
-        Scanner entrada = new Scanner (System.in);
-       
-        double n1, n2;
-        double multiplicacion;
+        //Scanner entrada = new Scanner (System.in);
+        int veces=1;
+        long ac=0;
+        float p=0;
+        long TInicio, TFin, tiempo=0; //Variables para determinar el tiempo de ejecución
+       /* Tiempos tiemporeal = new Tiempos();
+        tiemporeal.setCi(burstTime);
+        tiemporeal.setTi(arrivalTime);
+        tiemporeal.setDi(deadlineTime);*/
         
-        System.out.print("Ingrese el Primer Numero: ");
-        n1 = entrada.nextDouble();
-        System.out.print("Ingrese el Segundo Numero: ");
-        n2 = entrada.nextDouble();
+        //tiemporeal.Tiempos();
         
-        multiplicacion = n1 * n2;
+     /**************************************************************************************/    
+        while (veces<=999) {
+        TInicio = System.nanoTime(); //Obtine los nanosegundos           
+        double n1 = (int)(Math.random() * 100) + 1;  
+        double n2 = (int)(Math.random() * 100) + 1;
+        double multiplicacion;          
+        multiplicacion = n1 + n2;        
+        System.out.println("Numero 1:"+n1);
+        System.out.println("Numero 2:"+n2);
+        System.out.println("La multiplicacion es: " + multiplicacion);
+        System.out.println("Ejecucion del Comportamiento multiplicacion");
+        veces++;        
+        TFin = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+        tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
+        ac=ac+tiempo;
+        }
+     /***************************************************************************************/
+        p=ac/veces; 
+        System.out.println("Numero de veces ejecutadas: "+ veces);
+        System.out.println("Tiempo total de ejecución en nanosegundos de los 1000 comportamientos: " + ac); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+        System.out.println("Promedio de tiempo en nanoseguntos de 1000 comportamientos : "+ p);
+        System.out.println("Promedio de tiempo en miliseguntos de 1000 comportamientos : "+ (p/100000));
         
-        System.out.println("La Multiplicacion es: " + multiplicacion);
-        System.out.println("Ejecucion del Comportamiento Multiplicacion");
-        myAgent.doDelete();
+        /*Termina el agente*/
+        //myAgent.doDelete();
     }
 }

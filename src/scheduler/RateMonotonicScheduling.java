@@ -3,6 +3,7 @@ package scheduler;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class RateMonotonicScheduling {
 
 	private double boundary;
@@ -70,6 +71,7 @@ public class RateMonotonicScheduling {
 	}
 
 	public void executeTasks() {
+
 		findNextCurrent();
 		for(; time < maxTime + offset; time++) {
 			if(currentIndex != -1) {
@@ -170,7 +172,7 @@ public class RateMonotonicScheduling {
 	}
 
 	public void calculateBoundary(int numberOfTasks) {
-		boundary = numberOfTasks * ((Math.pow(2, 1/(double)numberOfTasks)) - 1);
+		boundary = numberOfTasks * ( (Math.pow(2, 1/(double)numberOfTasks) ) - 1);
 		System.out.println("Boundary : " + boundary);
 
 		if(listener != null)
@@ -239,5 +241,7 @@ public class RateMonotonicScheduling {
 		void AwtAndAtat(double waitingTime, double awt, double turnaroundTime, double atat);
 		void ganttChartData(ArrayList<GanttChartHolder> ganttChart);
 	}
-
+  
 }
+
+

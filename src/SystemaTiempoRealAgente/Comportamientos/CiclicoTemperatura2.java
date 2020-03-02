@@ -14,10 +14,8 @@ import SystemaTiempoRealAgente.Agentes.AgenteTemperatura2;
  * @author tony_
  */
  public class CiclicoTemperatura2 extends CyclicBehaviour
-   {   
-      
-      
-       public void action()
+   { 
+     public void action()
        {
            AgenteTemperatura2 llama = new AgenteTemperatura2();
            ACLMessage msm=llama.receive();

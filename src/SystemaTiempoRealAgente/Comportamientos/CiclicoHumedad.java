@@ -19,10 +19,10 @@ import SystemaTiempoRealAgente.Agentes.AgenteVelocidadCompresor;
     {
         public void action()
         {
-            AgenteHumedad llama = new AgenteHumedad();  
-            AgenteVelocidadCompresor llama2 = new AgenteVelocidadCompresor(); 
+            AgenteHumedad hume = new AgenteHumedad();  
+            AgenteVelocidadCompresor compr = new AgenteVelocidadCompresor(); 
             int humd = (int) (Math.random() * 100) + 1;
-            ACLMessage msm=llama2.receive();           
+            ACLMessage msm=hume.receive();           
             String mjss="";  
             if(msm!= null )                
             { 
@@ -33,23 +33,23 @@ import SystemaTiempoRealAgente.Agentes.AgenteVelocidadCompresor;
                     { 
                         mjss="seco";
                         respuesta.setContent(mjss);
-                        llama.send(respuesta);      
+                        hume.send(respuesta);      
                     } else if (humd >20 && humd <=40) 
                     {
                         mjss="confortable";
                         respuesta.setContent(mjss);
-                    llama.send(respuesta);  
+                    hume.send(respuesta);  
                     } else if (humd >40 && humd <=70) 
                     {
                         mjss="humedo";
                         respuesta.setContent(mjss);
-                        llama.send(respuesta);  
+                        hume.send(respuesta);  
                     }     
                     else if (humd >70 && humd <=100)
                     {
                         mjss="pegajoso";
                         respuesta.setContent(mjss);
-                        llama.send(respuesta);  
+                        hume.send(respuesta);  
                     } else 
                     {
                         System.out.println("Humedad fuera de rango");

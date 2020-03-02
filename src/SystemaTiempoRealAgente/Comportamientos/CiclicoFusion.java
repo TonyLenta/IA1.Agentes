@@ -5,12 +5,13 @@
  */
 package SystemaTiempoRealAgente.Comportamientos;
 
-
 import SystemaTiempoRealAgente.Agentes.AgenteFusion;
-import SystemaTiempoRealAgente.Agentes.AgenteVelocidadCompresor;
+import SystemaTiempoRealAgente.Agentes.AgenteTemperatura1;
+import SystemaTiempoRealAgente.Agentes.AgenteTemperatura2;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+
 
 /**
  *
@@ -22,8 +23,9 @@ public class CiclicoFusion extends CyclicBehaviour {
     float ac = 0, ac2 = 0, c1 = 0, c2 = 0, pt = 0;
 
     public void action() {
-        //AgenteFusion llama = new AgenteFusion();
-        //AgenteVelocidadCompresor llama2 = new AgenteVelocidadCompresor();
+        AgenteFusion fusion = new AgenteFusion();
+        AgenteTemperatura1 tempe1 = new AgenteTemperatura1();
+        AgenteTemperatura2 tempe2 = new AgenteTemperatura2();
         String mesajecompresor = "";
         AID id = new AID();
 
@@ -33,7 +35,7 @@ public class CiclicoFusion extends CyclicBehaviour {
         c1 = 0;
         c2 = 0;
 
-        ACLMessage msm6 = receive();
+        ACLMessage msm6 = fusion.receive();
         if (msm6 != null) {
             if (msm6.getContent().equals("solicitofuciontemperatura") == true) {
                 ACLMessage respuesta6 = msm6.createReply();
@@ -46,8 +48,8 @@ public class CiclicoFusion extends CyclicBehaviour {
                 //System.out.println(getLocalName()+" solicita temperatura 1");
                 msm.addReceiver(id);
                 msm.setContent("solicitotemperatura");
-                send(msm);
-                ACLMessage respuesta = blockingReceive();
+                fusion.send(msm);
+                ACLMessage respuesta = tempe1.blockingReceive();
                 if (respuesta != null) {
                     //Obtiene el valor
                     float temp1 = Float.parseFloat(respuesta.getContent());
@@ -64,8 +66,8 @@ public class CiclicoFusion extends CyclicBehaviour {
                 // System.out.println(getLocalName()+" solicita temperatura 2");
                 msm2.addReceiver(id);
                 msm2.setContent("solicitotemperatura2");
-                send(msm2);
-                ACLMessage respuesta2 = blockingReceive();
+                fusion.send(msm2);
+                ACLMessage respuesta2 = tempe2.blockingReceive();
                 if (respuesta2 != null) {
                     float temp2 = Float.parseFloat(respuesta2.getContent());
                     c1++;
@@ -95,24 +97,12 @@ public class CiclicoFusion extends CyclicBehaviour {
                     System.out.println("Temperatura fuera de rango");
                 }
                 respuesta6.setContent(mesajecompresor/*+":"+cadena*/);
-                send(respuesta6);
+                fusion.send(respuesta6);
                 System.out.println("Estado promedio temperatura: " + mesajecompresor);
 
             }
         } else {
             block();
         }
-    }
-
-    private ACLMessage receive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private ACLMessage blockingReceive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void send(ACLMessage msm) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

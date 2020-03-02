@@ -8,18 +8,13 @@ package SystemaTiempoRealAgente.Comportamientos;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import SystemaTiempoRealAgente.Agentes.AgenteTemperatura1;
-
-import jade.core.Agent;
-import SystemaTiempoRealAgente.Agentes.AgenteTemperatura1;
 /**
  *
  * @author tony_
  */
 public class CiclicloTemperatura1 extends CyclicBehaviour
    { 
-    
     protected long ci;
-    
     
     public void action()
        {

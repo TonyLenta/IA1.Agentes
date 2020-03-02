@@ -44,12 +44,6 @@ public class AppMain
             rma1 = mainContainer.createNewAgent("compresor", "SystemaTiempoRealAgente.Agentes.AgenteVelocidadCompresor", new Object[0]);
             rma1.start();
             
-             
-            
-            
-          
-           
-            
             // Agente temperatura 1
            rma4 = mainContainer.createNewAgent("temperatura", "SystemaTiempoRealAgente.Agentes.AgenteTemperatura1", new Object[0]);
            rma4.start();

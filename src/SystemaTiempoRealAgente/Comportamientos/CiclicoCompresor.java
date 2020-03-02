@@ -5,13 +5,12 @@
  */
 package SystemaTiempoRealAgente.Comportamientos;
 
+import SystemaTiempoRealAgente.Agentes.AgenteFusion;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import SystemaTiempoRealAgente.Agentes.AgenteVelocidadCompresor;
-import SystemaTiempoRealAgente.Comportamientos.CiclicoCompresor;
 import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
-
 
 
 /**
@@ -23,31 +22,11 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
      public void action()
         {  
             AgenteVelocidadCompresor compre= new AgenteVelocidadCompresor();
-            AgenteHumedad humed= new AgenteHumedad();
+            AgenteFusion fusion = new AgenteFusion();
+            AgenteHumedad humed= new AgenteHumedad();     
             
-            
-            CiclicoHumedad comhum = new CiclicoHumedad();
-            CiclicoCompresor comcomp =  new CiclicoCompresor();
             String msjfusiontemp="", msjhumeda="";    
             AID id=new AID();
-            
-            //Llama a agente fusion temperatura            
-            ACLMessage msm2=new ACLMessage(ACLMessage.AGREE);
-            id.setLocalName("fusion");        
-            msm2.addReceiver(id);
-            msm2.setContent("solicitofuciontemperatura");
-            send(msm2);
-            ACLMessage respuesta2 =blockingReceive();   
-            if(msm2!=null)
-            {
-                msjfusiontemp=respuesta2.getContent();
-               //System.out.println("Temperatura: "+msjfusiontemp);
-            }
-            else
-            {
-                block();
-            }  
-        
             
             
             //Llama agente humedad            
@@ -55,13 +34,12 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
             ACLMessage msm=new ACLMessage(ACLMessage.AGREE);
             msm.addReceiver(id);
             msm.setContent("solicitohumedad");             
-           send(msm);            
+            compre.send(msm);     
+            ACLMessage respuesta2 = compre.blockingReceive();
            
-         //  ACLMessage respuesta2 = blockingReceive();
-           ACLMessage respuesta = blockingReceive();
             if(msm!=null)
-            {                
-               msjhumeda="probando";
+            {          
+               msjhumeda=respuesta2.getContent();              
               
                 //System.out.println("Humedad: "+msjhumeda);
             }
@@ -70,8 +48,27 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
                 block(900000000);
             }
             
+            
+            
+            //Llama a agente fusion temperatura            
+            ACLMessage msm2=new ACLMessage(ACLMessage.AGREE);
+            id.setLocalName("fusion");        
+            msm2.addReceiver(id);
+            msm2.setContent("solicitofuciontemperatura");
+            compre.send(msm2);
+            ACLMessage respuesta =compre.blockingReceive();   
+            if(msm2!=null)
+            {
+                msjfusiontemp=respuesta.getContent();
+               //System.out.println("Temperatura: "+msjfusiontemp);
+            }
+            else
+            {
+                block();
+            }  
+        
             /*************************************************/
-            /*
+            
                    
             String msj="";
             System.out.println("Agente compresor: Fusion temperatrua "+msjfusiontemp+" && "+msjhumeda);
@@ -151,18 +148,10 @@ import SystemaTiempoRealAgente.Agentes.AgenteHumedad;
                 msj="Rapido";
                // System.out.println("Rapido");
             }
-            
-            */
-            
+                    
             System.out.println("Estado del compresor: "+msjhumeda);
          
        } 
 
-    private void send(ACLMessage msm2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private ACLMessage blockingReceive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
     }

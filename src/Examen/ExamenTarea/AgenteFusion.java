@@ -4,6 +4,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import java.util.Scanner;
 
 /**
  *
@@ -26,27 +27,32 @@ public class AgenteFusion extends Agent
 
     private class ciclico extends CyclicBehaviour 
     {
-        boolean finis = false;
         float ac = 0, ac2 = 0, c1 = 0, c2 = 0, pt = 0;
         public void action() 
-        {
-            block();
-            /*Tiempo de ejecucion*/
-            //int veces=1;
-            //long act=0;
-            //float tt,p=0;
-            long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
-            TInicio = System.currentTimeMillis(); //Tom
-            
+        { 
             /*Comunicacion agentes*/
+            ACLMessage msm6 = receive();
             String mesajecompresor = "";
             AID id = new AID();
-            ACLMessage msm6 = receive();
+            
             if (msm6 != null)
             {
+                ACLMessage respuesta6 = msm6.createReply();
+
                 if (msm6.getContent().equals("solicitofuciontemperatura") == true) 
                 {
-                    ACLMessage respuesta6 = msm6.createReply();
+                    long TInicio, TFin, tiempo; //Variables para determinar el tiempo de ejecución
+                        TInicio = System.currentTimeMillis(); //Tom
+                        /* tiempos   */
+                        Scanner reader = new Scanner(System.in);
+                        float di = 0;
+                        float u=0;
+                        float utemp1=0;
+                        float utemp2=0;
+                        float utt=0;
+                        System.out.println("Ingrese tiempo de plazo maximo de sensor fusion temperaturas");
+                        di = reader.nextFloat();
+                        
                     //Instancia solicitando temperatura 1
                     ACLMessage msm = new ACLMessage(ACLMessage.AGREE);
                     //Instancia solicitando temperatura 2
@@ -58,12 +64,17 @@ public class AgenteFusion extends Agent
                     msm.setContent("solicitotemperatura");
                     send(msm);
                     ACLMessage respuesta = blockingReceive();
+                    ACLMessage respuestafactutemp1 = blockingReceive();
                     if (respuesta != null) 
                     {
                         //Obtiene el valor
                         float temp1 = Float.parseFloat(respuesta.getContent());
                         c1++;
                         ac = ac + temp1;
+                        
+                        /*Factor u de temp1*/
+                        utemp1 = Float.parseFloat(respuestafactutemp1.getContent());
+                        System.out.println("Factor u de temp1: "+utemp1);
                     } else {
                         block();
                     }
@@ -75,19 +86,24 @@ public class AgenteFusion extends Agent
                     msm2.setContent("solicitotemperatura2");
                     send(msm2);
                     ACLMessage respuesta2 = blockingReceive();
+                    ACLMessage respuestafactutemp2 = blockingReceive();
                     if (respuesta2 != null) 
                     {
                         float temp2 = Float.parseFloat(respuesta2.getContent());
                         c1++;
                         ac2 = ac2 + temp2;
-                        // System.out.println(respuesta2.toString());
+                      
+                        /*Factor u de temp2*/
+                        utemp2 = Float.parseFloat(respuestafactutemp2.getContent());
+                        System.out.println("Factor u de temp2: "+utemp2);
+                        
                     } else {
                         block();
                     }
 
                     pt = (ac + ac2) / (c1 + c2);
                     System.out.println("Promedio temperaturas 1 y 2 :" + pt);
-                    String cadena = Float.toString(pt);
+                    
                     if (pt >= 0 && pt <= 10) 
                     {
                         mesajecompresor = "mbajo";
@@ -108,22 +124,36 @@ public class AgenteFusion extends Agent
                     {
                         System.out.println("Temperatura fuera de rango");
                     }
-                    respuesta6.setContent(mesajecompresor/*+":"+cadena*/);
-                    send(respuesta6);
+                    System.out.println("Sensor de fusion temperaturas 1 y 2: "+mesajecompresor);
                     
-                    /*Muestra tiempo de ejecucion*/
-                    /***************************************************************************************/
-                    TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-                    tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
-                    System.out.println("Tiempo de ejecución en milisegundos Promedio de Temperaturas: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
-                    //veces++;
-                    //act=act+tiempo;  
-                    //tt=ac;
-                    //p=tt/veces;
-                    //System.out.println("Numero de veces ejecutadas: "+ veces);
-                    //System.out.println("Tiempo total en milisegundos en generacion de Temperatura1: "+ ac);
-                    //System.out.println("Promedio de tiempo en minutos : "+ p);
-                    System.out.println("Estado promedio temperatura: " + mesajecompresor);
+                     
+                        
+                        /****************************************/
+                      /*Muestra tiempo de ejecucion
+                        /**************************************************************************************/
+                        TFin = System.currentTimeMillis(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+                        tiempo = TFin - TInicio; //Calculamos los milisegundos de diferencia
+                        System.out.println("Tiempo de ejecución en milisegundos sensor fusion de temperaturas 1 y 2: " + tiempo); //Mostramos en pantalla el tiempo de ejecución en milisegundos
+                                               
+                        /*Factor de utilizacion*/
+                        u=(float)tiempo/di;
+                        System.out.println("Factor u de fusion temperatrua 1 y 2: "+u);
+                        utt=u+utemp1+utemp2;
+                        
+                       
+                        System.out.println("Total de factor u: "+utt);
+                        
+                        
+                        
+                        String cadena = Float.toString(utt);                         
+                        respuesta6.setContent(mesajecompresor/*+"Factor U:"+cadena*/);
+                        send(respuesta6);
+                        
+                        ACLMessage respuesta3 = msm6.createReply();
+                        respuesta3.setContent(cadena);
+                        send(respuesta3);
+                        System.out.println("Envia factor utilizacion de sensor fusion de temperaturas 1 y 2 a compresor");
+                        
                 }
             } else
             {
